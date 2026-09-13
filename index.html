@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cricket Live Scorecard</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.scorecard {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    background: rgba(5, 15, 30, 0.94);
+    border: 2px solid rgba(255,255,255,0.20);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+/* HEADER */
+.header {
+    padding: 15px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.30);
+}
+
+.match-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.live {
+    background: #e50914;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* TEAMS */
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px;
+}
+
+.team {
+    width: 32%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.team small {
+    display: block;
+    margin-top: 7px;
+    font-size: 12px;
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.score {
+    text-align: center;
+    width: 36%;
+}
+
+.runs {
+    font-size: 44px;
+    font-weight: 800;
+}
+
+.overs {
+    margin-top: 3px;
+    font-size: 15px;
+    opacity: 0.75;
+}
+
+/* BATTERS */
+.section {
+    padding: 0 22px 18px;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: bold;
+    opacity: 0.65;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.player-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-score {
+    font-weight: bold;
+}
+
+/* BOWLER */
+.bowler {
+    margin: 0 22px 18px;
+    padding: 13px 15px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+}
+
+.bowler-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bowler-name {
+    font-weight: bold;
+}
+
+.figures {
+    font-weight: bold;
+}
+
+/* LAST OVER */
+.last-over {
+    margin: 0 22px 18px;
+}
+
+.balls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ball {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.wicket {
+    background: #b00020;
+}
+
+.boundary {
+    background: #087f23;
+}
+
+/* FOOTER STATS */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background: rgba(0,0,0,0.30);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.stat-value {
+    margin-top: 4px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* MOBILE */
+@media(max-width:600px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .header {
+        padding: 10px 13px;
+    }
+
+    .match-title {
+        font-size: 14px;
+    }
+
+    .live {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    .teams {
+        padding: 15px 10px;
+    }
+
+    .team {
+        font-size: 14px;
+    }
+
+    .score {
+        width: 40%;
+    }
+
+    .runs {
+        font-size: 30px;
+    }
+
+    .overs {
+        font-size: 11px;
+    }
+
+    .section {
+        padding: 0 12px 12px;
+    }
+
+    .bowler,
+    .last-over {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .stats {
+        padding: 11px 5px;
+    }
+
+    .stat-value {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scorecard">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="match-title">
+            🏏 INDIA vs AUSTRALIA
+        </div>
+
+        <div class="live">
+            🔴 LIVE
+        </div>
+    </div>
+
+    <!-- TEAMS + SCORE -->
+    <div class="teams">
+
+        <div class="team">
+            🇮🇳 INDIA
+            <small>Batting</small>
+        </div>
+
+        <div class="score">
+            <div class="runs">187 / 4</div>
+            <div class="overs">32.4 OVERS</div>
+        </div>
+
+        <div class="team">
+            🇦🇺 AUSTRALIA
+            <small>Bowling</small>
+        </div>
+
+    </div>
+
+    <!-- BATTERS -->
+    <div class="section">
+
+        <div class="section-title">
+            BATTERS
+        </div>
+
+        <div class="player-row">
+            <div class="player-name">Gill *</div>
+            <div class="player-score">72 (81)</div>
+        </div>
+
+        <div class="player-row">
+            <div class="player-name">Rahul</div>
+            <div class="player-score">34 (39)</div>
+        </div>
+
+    </div>
+
+    <!-- BOWLER -->
+    <div class="bowler">
+
+        <div class="section-title">
+            BOWLER
+        </div>
+
+        <div class="bowler-line">
+            <div class="bowler-name">
+                Cummins
+            </div>
+
+            <div class="figures">
+                6.4 - 0 - 31 - 2
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LAST OVER -->
+    <div class="last-over">
+
+        <div class="section-title">
+            LAST OVER
+        </div>
+
+        <div class="balls">
+
+            <div class="ball">1</div>
+            <div class="ball boundary">4</div>
+            <div class="ball">0</div>
+            <div class="ball">1</div>
+            <div class="ball wicket">W</div>
+            <div class="ball">2</div>
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-label">CRR</div>
+            <div class="stat-value">5.72</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">TARGET</div>
+            <div class="stat-value">312</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">REQ RR</div>
+            <div class="stat-value">6.21</div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
